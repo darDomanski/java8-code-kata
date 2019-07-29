@@ -52,7 +52,7 @@ public class Exercise3Test extends ClassicOnlineStore {
          * Don't use {@link Stream#sorted}
          */
         Comparator<Customer> comparator = Comparator.comparing(Customer::getAge);
-        Optional<Customer> youngestCustomer = customerList.stream().reduce((customer, customer2) -> customer.getAge() < customer2.getAge() ? customer: customer2);
+        Optional<Customer> youngestCustomer = customerList.stream().min(comparator);
 
         assertThat(youngestCustomer.get(), is(customerList.get(8)));
     }
