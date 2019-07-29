@@ -86,7 +86,7 @@ public class Exercise2Test extends ClassicOnlineStore {
          * Use {@link Stream#flatMap} to create a stream from each element of a stream.
          */
         Function<Customer, Stream<Item>> getItemStream = customer -> customer.getWantToBuy().stream();
-        Stream<String> itemStream = customerList.stream().map(getItemStream).flatMap(items -> items.map(s -> s.getName()));
+        Stream<String> itemStream = customerList.stream().flatMap(getItemStream).map(Item::getName);
 
         assertTrue(AssertUtil.isLambda(getItemStream));
         List<String> itemList = itemStream.collect(Collectors.toList());
