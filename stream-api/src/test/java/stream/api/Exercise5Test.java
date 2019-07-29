@@ -51,7 +51,7 @@ public class Exercise5Test extends ClassicOnlineStore {
         /**
          * Create a csv string of customer names in brackets "[]" by using {@link Collectors#joining}
          */
-        String string = "[" + customerList.stream().map(customer -> customer.getName()).collect(Collectors.joining(",")) + "]";
+        String string = customerList.stream().map(customer -> customer.getName()).collect(Collectors.joining(",", "[", "]"));
 
         assertThat(string, is("[Joe,Steven,Patrick,Diana,Chris,Kathy,Alice,Andrew,Martin,Amy]"));
     }
