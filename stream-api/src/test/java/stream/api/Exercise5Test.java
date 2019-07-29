@@ -77,7 +77,7 @@ public class Exercise5Test extends ClassicOnlineStore {
          * Create a map of age as key and number of customers as value
          * using {@link Collectors#groupingBy} and {@link Collectors#counting}
          */
-        Map<Integer, Long> ageDistribution = null;
+        Map<Integer, Long> ageDistribution = customerList.stream().collect(Collectors.groupingBy(Customer::getAge, Collectors.counting()));
 
         assertThat(ageDistribution.size(), is(9));
         ageDistribution.forEach((k, v) -> {
